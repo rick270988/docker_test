@@ -34,4 +34,24 @@ RUN bash -c " \
          install.packages('devtools'); \
          library('devtools'); \
        \" \
-   "     
+   "    
+
+RUN  apt-get update -y \
+     libicu-dev \
+     pandoc-citeproc \
+     pandoc \
+     make \
+     cmake \
+     zliblg-dev \
+     libglpk-dev \   
+     libgmp3-dev \
+     libxm12-dev
+
+
+RUN bash -c " \
+       R  -e \"  \
+         library('devtools'); \
+         install_version('rstanarm','2.21.3',upgrade = 'never'); \
+         library('rstanarm'); \
+       \" \
+   " 
